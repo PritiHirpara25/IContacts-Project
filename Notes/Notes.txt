@@ -45,7 +45,7 @@ IContact Application using Express & MongoDB - developed by : PRITI
 5./*
     @usage : Delete a contact
     @method : DELETE
-    @params : contactId
+    \\@params : contactId
     @url : http://localhost:9999/contacts/:contactId
  */
 
@@ -57,11 +57,30 @@ IContact Application using Express & MongoDB - developed by : PRITI
  */
 
 7./*
-    @usage : Get a grop
+    @usage : Get a grou/p
     @method : GET
     @params : groupId
     @url : http://localhost:9999/groups/:groupId
  */
+
+
+
+
+ [
+    {
+        "name": "Priti",
+        "imageUrl": "https://www.priti.com",
+        "email": "pritihirpara@gmail.com",
+        "mobile": 9858989890,
+        "company": "SkillQode",
+        "title": "xyz",
+        "groupID": {
+            "id": 101,
+            "name": "Gaming"
+        }
+    }
+]
+ 
 
 
 

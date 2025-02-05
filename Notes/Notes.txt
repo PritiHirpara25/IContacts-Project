@@ -18,49 +18,49 @@ IContact Application using Express & MongoDB - developed by : PRITI
     @usage : Get all contact
     @method : GET
     @params : no-params
-    @url : http://localhost:9999/contacts
+    @url : http://localhost:8800/contacts
  */
 
 2./*
     @usage : Get a contact
     @method : GET
     @params : contactId
-    @url : http://localhost:9999/contacts/:contactId
+    @url : http://localhost:8800/contacts/:contactId
  */
 
 3./*
     @usage : Create a contact
     @method : POST
     @params : name , imageUrl , email , mobile , company , title  , groupID
-    @url : http://localhost:9999/contacts/
+    @url : http://localhost:8800/contacts/
  */
 
 4./*
     @usage : Update a contact
     @method : PUT
     @params : name , imageUrl , email , mobile , company , title  , groupID
-    @url : http://localhost:9999/contacts/:contactId
+    @url : http://localhost:8800/contacts/:contactId
  */
 
 5./*
     @usage : Delete a contact
     @method : DELETE
     \\@params : contactId
-    @url : http://localhost:9999/contacts/:contactId
+    @url : http://localhost:8800/contacts/:contactId
  */
 
 6./*
     @usage : Get all groups
     @method : GET
     @params : no-params
-    @url : http://localhost:9999/groups/
+    @url : http://localhost:8800/groups/
  */
 
 7./*
-    @usage : Get a grou/p
+    @usage : Get a group
     @method : GET
     @params : groupId
-    @url : http://localhost:9999/groups/:groupId
+    @url : http://localhost:8800/groups/:groupId
  */
 
 

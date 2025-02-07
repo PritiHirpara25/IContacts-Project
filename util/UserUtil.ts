@@ -1,24 +1,22 @@
-import path from 'path';
-import { IUser } from '../models/IUser';
-// hu check karu wait
-const jsonfile = require('jsonfile')
+// import path from 'path';
+// import { IUser } from '../models/IUser';
 
-export class UserUtil{
+// const jsonfile = require('jsonfile')
 
-    private static usersJsonPath = path.join(__dirname , "..","db","users.json")
+// export class UserUtil {
 
-    public static getAllUsersFromDB():Promise<IUser[]>{
-        return new Promise((resolve , reject) => {
-            jsonfile.readFile(this.usersJsonPath,(err:any , data:any) => {
-                if(err){
-                    reject(err);
-                }
-                else{
-                    resolve(data);
-                }
-            })
-        })
-    }
-}
+//     private static usersJsonPath = path.join(__dirname, "..", "db", "users.json")
 
-//  have aa mara ek nu j 6e tamaru me close kari didhu ok
+//     public static getAllUsersFromDB(): Promise<IUser[]> {
+//         return new Promise((resolve, reject) => {
+//             jsonfile.readFile(this.usersJsonPath, (err: any, data: any) => {
+//                 if (err) {
+//                     reject(err);
+//                 }
+//                 else {
+//                     resolve(data);
+//                 }
+//             })
+//         })
+//     }
+// }

@@ -8,7 +8,7 @@ const groupRouter: Router = Router();
     @method : GET
     @params : no-params
     @url : http://localhost:8800/groups/
- */
+*/
 
 groupRouter.get("/", async (request: Request, response: Response) => {
     await groupController.getAllGroups(request, response)

@@ -23,6 +23,30 @@ export const getAllGroups = async (request: Request, response: Response) => {
 }
 
 
+/*
+    @usage : create a group
+    @method : POST
+    @params : name
+    @url : http://localhost:8800/groups
+ */
+
+export const createGroup = async (request: Request, response: Response) => {
+    let { name } = request.body;
+    console.log("create group",name);
+    let theGroup: IGroup | null | undefined = await new GroupsTable({
+        name: name,
+    }).save();
+    if (theGroup) {
+        return response.status(200).json({
+            data: theGroup,
+            msg: "Group is created",
+        });
+    }
+};
+
+
+
+
 
 
 

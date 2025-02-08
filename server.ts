@@ -13,7 +13,7 @@ const dbName: string | undefined = process.env.MONGO_DB_DATABASE;
 
 //configure the routers
 import groupRouter from './Routes/groupRouter';
-app.use("/grops", groupRouter);
+app.use("/groups", groupRouter);
 
 if (port) {
     app.listen(Number(port), () => {
@@ -27,7 +27,7 @@ if (port) {
                     process.exit(0);
                 });
         }
-        console.log(`Express Server is Started at http://${hostName}:${port}`);
+        console.log(`Express Server is Started at ${port}`);
     });
 }
 

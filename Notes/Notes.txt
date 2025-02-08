@@ -32,7 +32,7 @@ IContact Application using Express & MongoDB - developed by : PRITI
     @usage : Create a contact
     @method : POST
     @params : name , imageUrl , email , mobile , company , title  , groupID
-    @url : http://localhost:8800/contacts/
+    @url : http://localhost:8800/contacts
  */
 
 4./*
@@ -53,7 +53,7 @@ IContact Application using Express & MongoDB - developed by : PRITI
     @usage : Get all groups
     @method : GET
     @params : no-params
-    @url : http://localhost:8800/groups/
+    @url : http://localhost:8800/groups
  */
 
 7./*

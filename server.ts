@@ -10,6 +10,7 @@ const app: Application = express();
 const port: number | string | undefined = process.env.PORT || 9999;
 const dbUrl: any = process.env.MONGO_DB_CLOUD_URL;
 const dbName: string | undefined = process.env.MONGO_DB_DATABASE;
+app.use(express.json());
 
 //configure the routers
 import groupRouter from './Routes/groupRouter';

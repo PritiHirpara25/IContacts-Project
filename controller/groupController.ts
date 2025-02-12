@@ -24,6 +24,27 @@ export const getAllGroups = async (request: Request, response: Response) => {
 
 
 /*
+    @usage : to get a group
+    @method : GET
+    @params : groupId
+    @url : http://localhost:8800/groups:groupId
+*/
+
+    export const getGroup = async (request: Request, response: Response) => {
+        let {groupId} = request.params;
+        const mongogroupID = new mongoose.Types.ObjectId(groupId);
+        let theGroup:IGroup | undefined | null = await GroupsTable.findById(mongogroupID);
+        if(!groupId){
+            return response.status(404).json({
+                data:null,
+                error:"NO Group is found",
+            });
+        }
+        return response.status(200).json(theGroup);
+    }
+
+
+/*
     @usage : create a group
     @method : POST
     @params : name

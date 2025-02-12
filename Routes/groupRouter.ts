@@ -17,6 +17,19 @@ groupRouter.get("/", async (request: Request, response: Response) => {
 
 
 /*
+    @usage : to get a group
+    @method : POST
+    @params : name
+    @url : http://localhost:8800/groups:groupId
+*/
+
+groupRouter.get("/:groupId", async (request: Request, response: Response) => {
+    await groupController.getGroup(request, response)
+})
+
+
+
+/*
     @usage : create a group
     @method : POST
     @params : name
@@ -29,5 +42,6 @@ groupRouter.post("/",[
     console.log("post");
     await groupController.createGroup(request, response)
 })
+
 
 export default groupRouter;

@@ -17,7 +17,7 @@ userRouter.post('/', async (request: Request, response: Response) => {
 
 
 /*
-    @usage : create a contact
+    @usage : create all contact
     @method : GET
     @params : no-params
     @url : http://localhost:8800/user

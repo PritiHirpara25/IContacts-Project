@@ -3,6 +3,13 @@ import { Request, Response } from 'express'
 
 // create user
 
+/*
+    @usage : create a contact
+    @method : POST
+    @params : no-params
+    @url : http://localhost:8800/user
+*/
+
 export const createUser = async (request: Request, response: Response) => {
     let userBody = request.body;
     console.log("userBody", userBody);
@@ -24,11 +31,12 @@ export const createUser = async (request: Request, response: Response) => {
 // get all user 
 
 /*
-    @usage : create a contact
-    @method : POST
+    @usage : create all contact
+    @method : GET
     @params : no-params
     @url : http://localhost:8800/user
 */
+
 
 export const readUser = async (request: Request, response: Response) => {
     try {

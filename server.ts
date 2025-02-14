@@ -16,6 +16,9 @@ app.use(express.json());
 import groupRouter from './Routes/groupRouter';
 app.use("/groups", groupRouter);
 
+import userRouter from './Routes/userRouter';
+app.use("/user",userRouter)
+
 if (port) {
     app.listen(Number(port), () => {
         if (dbUrl && dbName) {

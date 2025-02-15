@@ -10,7 +10,6 @@ import mongoose from "mongoose";
     @params : no-params
     @url : http://localhost:8800/groups/
  */
-
 export const getAllGroups = async (request: Request, response: Response) => {
     try {
         let groups: IGroup[] | undefined = await GroupsTable.find();
@@ -24,24 +23,23 @@ export const getAllGroups = async (request: Request, response: Response) => {
 
 
 /*
-    @usage : to get a group
+    @usage : to get a group by ID
     @method : GET
     @params : groupId
     @url : http://localhost:8800/groups:groupId
 */
-
-    export const getGroup = async (request: Request, response: Response) => {
-        let {groupId} = request.params;
-        const mongogroupID = new mongoose.Types.ObjectId(groupId);
-        let theGroup:IGroup | undefined | null = await GroupsTable.findById(mongogroupID);
-        if(!groupId){
-            return response.status(404).json({
-                data:null,
-                error:"NO Group is found",
-            });
-        }
-        return response.status(200).json(theGroup);
+export const getGroup = async (request: Request, response: Response) => {
+    let { groupId } = request.params;
+    const mongogroupID = new mongoose.Types.ObjectId(groupId);
+    let theGroup: IGroup | undefined | null = await GroupsTable.findById(mongogroupID);
+    if (!groupId) {
+        return response.status(404).json({
+            data: null,
+            error: "NO Group is found",
+        });
     }
+    return response.status(200).json(theGroup);
+}
 
 
 /*
@@ -50,10 +48,9 @@ export const getAllGroups = async (request: Request, response: Response) => {
     @params : name
     @url : http://localhost:8800/groups
  */
-
 export const createGroup = async (request: Request, response: Response) => {
     let { name } = request.body;
-    console.log("create group",name);
+    console.log("create group", name);
     let theGroup: IGroup | null | undefined = await new GroupsTable({
         name: name,
     }).save();

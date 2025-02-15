@@ -13,11 +13,17 @@ const dbName: string | undefined = process.env.MONGO_DB_DATABASE;
 app.use(express.json());
 
 //configure the routers
+// groups
 import groupRouter from './Routes/groupRouter';
 app.use("/groups", groupRouter);
 
+// user
 import userRouter from './Routes/userRouter';
 app.use("/user",userRouter)
+
+//contact
+import contactRouter from './Routes/contactRouter';
+app.use('/contact',contactRouter);
 
 if (port) {
     app.listen(Number(port), () => {

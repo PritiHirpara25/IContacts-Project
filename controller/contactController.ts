@@ -20,6 +20,7 @@ export const createContact = async (request:Request , response:Response) => {
     }
 }
 
+
 /*
     @usage : get All contact
     @method : GET

@@ -4,6 +4,7 @@ import GroupsTable from "../database/GroupSchema";
 import { IGroup } from "../models/IGroup";
 import mongoose from "mongoose";
 
+
 /*
     @usage : Get all groups
     @method : GET

@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import * as groupController from '../controller/groupController';
-import {body} from 'express-validator';
+// import {body} from 'express-validator';
 
 const groupRouter: Router = Router();
 
@@ -37,9 +37,9 @@ groupRouter.get("/:groupId", async (request: Request, response: Response) => {
 */
 
 groupRouter.post("/",[
-    body('name').not().isEmpty().withMessage("Name is required")
+    // body('name').not().isEmpty().withMessage("Name is required")
 ], async (request: Request, response: Response) => {
-    console.log("post");
+    // console.log("post");
     await groupController.createGroup(request, response)
 })
 

@@ -2,30 +2,88 @@ import UserTable from '../database/userSchema'
 import { Request, Response } from 'express'
 import mongoose from 'mongoose';
 import { IUser } from '../models/IUser';
+import jwt from 'jsonwebtoken';
+import bcryptjs from 'bcryptjs';
+import gravatar from 'gravatar';
 import { error, group } from 'console';
+import { validationResult } from 'express-validator';
 
 
 /*
-    @usage : create a user
+    @usage : regitster a user
     @method : POST
     @params : no-params
-    @url : http://localhost:8800/user
+    @url : http://localhost:8800/users/register
 */
-export const createUser = async (request: Request, response: Response) => {
-    let userBody = request.body;
-    console.log("userBody", userBody);
-    try {
-        let user: any = new UserTable(userBody);
-        let userData = await user.save();
-        if (userData) {
-            return response.json({ data: userData });
-        }
-        else {
-            return response.status(400).send("Not Found");
-        }
+export const registerUser = async (request: Request, response: Response) => {
+    // let {username , email , password , imageUrl , isAdmin} = request.body;
+    // try {
+    //     let user: any = new UserTable({
+    //         username :username ,
+    //         email :email , 
+    //         password : password,
+    //         imageUrl : imageUrl,
+    //         isAdmin:isAdmin
+    //     });
+    //     let userData = await user.save();
+    //     if (userData) {
+    //         return response.json({ data: userData });
+    //     }
+    //     else {
+    //         return response.status(400).send("Not Found");
+    //     }
+    // }
+    // catch (err) {
+    //     response.status(400).send("Somthing Went Wrong");
+    // }
+    const errors = validationResult(request);
+    if(!errors.isEmpty()){
+        return response.status(400).json({errors:errors.array()});
     }
-    catch (err) {
-        response.status(400).send("Somthing Went Wrong");
+    try{
+        // read the form data
+        let {username , email , password} = request.body;
+        // check if the user is exists
+        const userObj = await UserTable.findOne({email:email});
+        if(userObj){
+            return response.status(400).json({
+                error:"The user is already exists"
+            })
+        }
+
+        // password encryption
+        const salt = await bcryptjs.genSalt(10);
+        const hashPassword = await bcryptjs.hash(password ,salt);
+
+        // gravatar
+        const imageUrl = gravatar.url(email , {
+            size:"200",
+            rating:"pg",
+            default:"mm"
+        });
+
+        
+        // insert to db
+        const newUser : IUser = {
+            username :username ,
+            email :email , 
+            password : hashPassword,
+            imageUrl : imageUrl,
+            isAdmin:false
+        }
+
+        const theUserObj = await new UserTable(newUser).save();
+        if (theUserObj) {
+            return response.status(200).json({ 
+                data: theUserObj,
+                msg:"Registration is success!"
+            });
+        }
+
+    }catch(error:any){
+        return response.status(500).json({
+            error:error.message
+        });
     }
 }
 

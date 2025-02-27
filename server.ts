@@ -19,7 +19,7 @@ app.use("/groups", groupRouter);
 
 // user
 import userRouter from './Routes/userRouter';
-app.use("/user",userRouter)
+app.use("/users",userRouter)
 
 //contact
 import contactRouter from './Routes/contactRouter';

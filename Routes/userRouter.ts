@@ -1,17 +1,21 @@
 import { Request, Response, Router } from "express";
 import * as userController from '../controller/userController'
-// import {}
+import {body} from 'express-validator';
 
 const userRouter: Router = Router();
 
 /*
-    @usage : create a contact
+    @usage : register a contact
     @method : POST
     @params : no-params
-    @url : http://localhost:8800/user
+    @url : http://localhost:8800/users/register
 */
-userRouter.post('/', async (request: Request, response: Response) => {
-    await userController.createUser(request, response)
+userRouter.post('/register', [
+    body('username').not().isEmpty().withMessage("Username is Required"),
+    body('email').isEmail().withMessage("Proper Email is Required"),
+    body('password').isStrongPassword().withMessage("String Password is Required")
+],async (request: Request, response: Response) => {
+    await userController.registerUser(request, response)
 })
 
 

@@ -10,8 +10,17 @@ import ContactTable from "../database/ContactSchema";
     @url : http://localhost:8800/contact
 */  
 export const createContact = async (request:Request , response:Response) => {
-    let contactdata = request.body;
-    let theContact: IContact | null | undefined = await new ContactTable(contactdata).save();
+    let { user ,name , imageUrl , mobile , email , company , title , groupId } = request.body;
+    let theContact: IContact | null | undefined = await new ContactTable({
+        user : user,
+        name : name,
+        imageUrl : imageUrl , 
+        mobile : mobile , 
+        email : email ,
+        company : company, 
+        title:title , 
+        groupId:groupId
+    }).save();
     if(theContact){
         return response.status(200).json({
             data:theContact,

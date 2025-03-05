@@ -49,7 +49,7 @@ contactRouter.put('/:contactId',async(request:Request , response:Response) => {
 
 
 /*
-    @usage : update a contact by Id
+    @usage : delete a contact by Id
     @method : DELETE
     @params : contactId
     @url : http://localhost:8800/contact:contactId

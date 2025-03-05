@@ -10,8 +10,8 @@ const userRouter: Router = Router();
     @params : no-params
     @url : http://localhost:8800/users/register
 */
-userRouter.post('/register', [
-    body('username').not().isEmpty().withMessage("Username is Required"),
+userRouter.post('/register'  ,  [
+    body('username').not().isEmpty().withMessage("Username is Reuired"),
     body('email').isEmail().withMessage("Proper Email is Required"),
     body('password').isStrongPassword().withMessage("String Password is Required")
 ],async (request: Request, response: Response) => {

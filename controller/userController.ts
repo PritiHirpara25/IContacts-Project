@@ -5,7 +5,6 @@ import { IUser } from '../models/IUser';
 import jwt from 'jsonwebtoken';
 import bcryptjs from 'bcryptjs';
 import gravatar from 'gravatar';
-import { error, group } from 'console';
 import { validationResult } from 'express-validator';
 
 

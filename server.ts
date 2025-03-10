@@ -1,7 +1,8 @@
 import express, { Application, Request, Response } from 'express';
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
-dotenv.config({ path: "./.env" })
+dotenv.config({ path: "./.env" });
+import cors from 'cors';
 
 const hostName: string = '127.0.0.1';
 
@@ -11,6 +12,11 @@ const port: number | string | undefined = process.env.PORT || 9999;
 const dbUrl: any = process.env.MONGO_DB_CLOUD_URL;
 const dbName: string | undefined = process.env.MONGO_DB_DATABASE;
 app.use(express.json());
+
+let corsOption = {
+    origin:"http://localhost:5173"
+}
+app.use(cors(corsOption));
 
 //configure the routers
 // groups
